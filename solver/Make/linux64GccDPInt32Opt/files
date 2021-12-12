@@ -1,0 +1,4 @@
+
+SOURCE += rodFoam.C
+
+EXE = $(FOAM_APPBIN)/rodFoam

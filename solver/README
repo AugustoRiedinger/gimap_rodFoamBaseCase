@@ -1,0 +1,21 @@
+- Solver should be located in $HOME/OpenFOAM/username-9/run/.
+
+- Before compiling, copy and paste this in Make/options:
+
+    EXE_INC = \
+        -I$(LIB_SRC)/finiteVolume/lnInclude \
+        -I$(LIB_SRC)/meshTools/lnInclude
+
+    EXE_LIBS = \
+        -lfiniteVolume \
+        -lmeshTools
+
+- Then, in order to compile:
+
+    - Log as root in BASH with sudo su.
+    - source /opt/OpenFOAM/OpenFOAM-9/etc/bashrc as root.
+    - run wmake.
+
+- To verify that it compiled correctly:
+
+    - rodFoam -help 
