@@ -18,24 +18,24 @@ FoamFile
 
 scale 1e-4;
 
-//mergeType points; //Or: blockMesh -merge-points
+mergeType points; //Or: blockMesh -merge-points
 
-//wedgeAngle              2.5;
-//rodRadius               9.9;
-//airRadius               999;
-//tanAlpha                #eval{ tan(0.5*degToRad($wedgeAngle)) };
-//posRodZ                 #eval{ $rodRadius*$tanAlpha };
-//negRodZ                 #eval{ - $posRodZ };
-//posAirZ                 #eval{ $airRadius*$tanAlpha };
-//negAirZ                 #eval{ - $posAirZ };
+wedgeAngle              2.5;
+rodRadius               9.9;
+airRadius               999;
+tanAlpha                #calc"tan(0.5*degToRad($wedgeAngle))";
+posRodZ                 #calc"$rodRadius*$tanAlpha";
+negRodZ                 #calc"-$posRodZ";
+posAirZ                 #calc"$airRadius*$tanAlpha";
+negAirZ                 #calc"-$posAirZ";
 
 vertices        
 (
-    	(0 0 0)            	  // vertex #0
-    	(100 0 0)          	  // vertex #1
+  (0 0 0)            	      // vertex #0
+  (100 0 0)          	      // vertex #1
  	(100 $rodRadius $posRodZ) // vertex #2
-        (0 $rodRadius  $posRodZ)  // vertex #3
-        (0 $rodRadius $negRodZ)   // vertex #4
+  (0 $rodRadius  $posRodZ)  // vertex #3
+  (0 $rodRadius $negRodZ)   // vertex #4
  	(100 $rodRadius $negRodZ) // vertex #5
 	(0 $airRadius $posAirZ)   // vertex #6
 	(100 $airRadius $posAirZ) // vertex #7
@@ -45,8 +45,8 @@ vertices
 
 blocks          
 (
-        hex (0 1 5 4 0 1 2 3) (30 6 1) simpleGrading (1 1 1) // block #0
-	hex (4 5 8 9 3 2 7 6) (30 599 1) simpleGrading (1 1 1)   // block #1
+  hex (0 1 5 4 0 1 2 3) (30 6 1)   simpleGrading (1 1 1)    // block #0
+	hex (4 5 8 9 3 2 7 6) (30 599 1) simpleGrading (1 1 1)    // block #1
 );
 
 edges           

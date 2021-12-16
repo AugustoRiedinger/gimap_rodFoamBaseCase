@@ -21,40 +21,35 @@ FoamFile
 
 dimensions      [1 2 -3 0 0 -1 0]; // [kg * m^2 /( s^3 A)]
 
-internalField   uniform 0;
+internalField   uniform 1;
 
 boundaryField
 {
     leftWall        
     {   
-       
-	type            fixedValue;
+	      type            fixedValue;
         value           uniform 707; 
-      }
+    }
 
     rightWall       
     {
-      type            fixedValue;
-      value           uniform  0;  
+        type            fixedValue;
+        value           uniform  1;  
     }
 
     atmosphereTop     
     {
-    
-     type            zeroGradient; 
-     
+        type            zeroGradient; 
     }
    
     atmosphereRight 
    {
-
-type            zeroGradient;  	
-    }
+        type            zeroGradient;  	
+   }
 
   atmosphereLeft
    {
-    type            zeroGradient; 
-    	
+        type            zeroGradient; 
     }
     axis            
     {
@@ -81,6 +76,5 @@ type            zeroGradient;
         type            wedge;
     }
 }
-
 
 // ************************************************************************* //
